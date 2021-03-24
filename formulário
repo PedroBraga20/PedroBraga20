@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <form action="formulario.php" method="POST">
+            <input type="text" name="local">
+            <input type="submit">
+        </form>
+    </body>
+
+    <?php
+        if(!array_key_exists("local", $_POST)) exit;
+        $local = $_POST["local"];
+        $lista = fopen("violencia-domestica-df.csv", "r");
+        $linha = fgetcsv($lista);
+        $soma = 0;
+        while($linha = fgetcsv($lista)){
+            if($linha[0]==$local){
+
+                for($i=1; $i<7 ; $i++){
+                    echo (2010 + $i) . " --> $linha[$i] <br>";
+                    $soma+=$linha[$i];
+                }
+                echo " soma = $soma";
+            }
+        }
+
+
+
+    ?>
+</html>
