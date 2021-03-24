@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<?php
+    $ano = $_GET["ano"];
+    $lista = fopen("violencia-domestica-df.csv", "r");
+    $linha = fgetcsv($lista);
+    $indice = $ano - 2010;
+    while($linha = fgetcsv($lista)){
+        echo "$linha[0] $linha[$indice] <br>";
+    }
+    fclose($lista);    
+?>
+</html>
